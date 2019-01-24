@@ -1,0 +1,5 @@
+package com.zuul.ZullDemo.filters;
+
+public class PreFilter implements ZuulFilter {
+
+}

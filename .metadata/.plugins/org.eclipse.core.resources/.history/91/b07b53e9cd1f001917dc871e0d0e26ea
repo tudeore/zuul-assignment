@@ -1,0 +1,5 @@
+package com.mmbank.zuulmmbank.filters;
+
+public class PostFilter implements ZuulFilter {
+
+}

@@ -1,0 +1,14 @@
+package com.mmbank.zuulmmbank;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ZuulMmbankApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ZuulMmbankApplication.class, args);
+	}
+
+}
+
