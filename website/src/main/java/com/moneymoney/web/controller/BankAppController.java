@@ -25,7 +25,9 @@ public class BankAppController {
 	@RequestMapping("/deposit")
 	public String deposit(@ModelAttribute Transaction transaction, Model model) {
 
-		restTemplate.postForEntity("http://bankapp/transactions/deposit", transaction, null);
+		restTemplate.postForEntity("http://zuulserver/transaction/transactions/deposit", transaction, null);
+		//							http://localhost:8181/transaction/...
+		//							http://localhost:9696/transactions/deposit
 		model.addAttribute("message", "Success!");
 		return "DepositForm";
 	}

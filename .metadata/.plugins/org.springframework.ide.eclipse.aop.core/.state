@@ -2,6 +2,8 @@
 <aop-reference-model>
 <aop-project name="zuul-mmbank"/>
 <aop-project name="eureka-server"/>
+<aop-project name="Hello-World"/>
+<aop-project name="Zull-Demo"/>
 <aop-project name="bank-transection"/>
 <aop-project name="configuration-service"/>
 <aop-project name="bankapp"/>
