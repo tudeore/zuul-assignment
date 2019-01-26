@@ -1,8 +1,11 @@
 package com.cg.banktransection.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.cg.banktransection.service.SavingsService;
+import com.cg.banktransection.transaction.CurrentDataSet;
 import com.cg.banktransection.transaction.Transaction;
 
 @RestController
@@ -22,6 +26,11 @@ public class TransactionResources {
 
 	@Autowired
 	private RestTemplate template;
+	
+	@GetMapping
+	public String name() {
+		return "Ujwala";
+	}
 
 	@PostMapping("/deposit")
 	public ResponseEntity<Transaction> deposit(@RequestBody Transaction transaction) {
@@ -38,7 +47,6 @@ public class TransactionResources {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
-	
 	@PostMapping("/withdraw")
 	public ResponseEntity<Transaction> withDraw(@RequestBody Transaction transaction) {
 
@@ -54,7 +62,6 @@ public class TransactionResources {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
-	
 	@PostMapping("/fundtransfer")
 	public ResponseEntity<Transaction> fundTransfer(@RequestParam int senderAccountNumber,
 			@RequestParam int receiverAccountNumber, @RequestParam double amount) {
@@ -76,6 +83,16 @@ public class TransactionResources {
 		template.put("http://accountService/accounts/" + receiverAccountNumber + "?currentBalance=" + newBalance2,
 				null);
 		return new ResponseEntity<>(HttpStatus.OK);
+
+	}
+	
+	@GetMapping("/statement")
+	public ResponseEntity<CurrentDataSet> getStatement() {
+		CurrentDataSet currentDataSet = new CurrentDataSet();
+		List<Transaction> transactions = service.getStatement();
+		currentDataSet.setTransactions(transactions);
+
+		return new ResponseEntity<>(currentDataSet,HttpStatus.OK);
 
 	}
 

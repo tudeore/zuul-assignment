@@ -13,5 +13,6 @@
 		Enter Receiver Account Number: <input name="receiverAccountNumber" TYPE="number"/><br /> <br/>
 		Enter Amount : <input name="amount" TYPE="number" /><br /> <input type="submit" />
 	</form>
+	<a href="statement?offset=1&size=5">Get Statement</a>
 </body>
 </html>

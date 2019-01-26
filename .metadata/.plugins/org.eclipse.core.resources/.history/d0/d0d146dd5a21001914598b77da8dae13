@@ -1,0 +1,10 @@
+#server.port=8181
+spring.application.name=zuulServer
+
+#spring.application.name = zuulserver
+
+spring
+zuul.routes.bankapp.url = http://localhost:8989
+zuul.routes.accountService.url=http://localhost:8484
+server.port = 8181
+#ribbon.eureka.enabled=false

@@ -1,6 +1,7 @@
 package com.cg.banktransection.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,11 @@ public class SavingsServiceImpl implements SavingsService {
 			repository.save(transaction);
 		}
 		return currentBalance;
+	}
+
+	@Override
+	public List<Transaction> getStatement() {
+		return repository.findAll();
 	}
 
 }
